@@ -22,15 +22,15 @@ export function getCurrentUser() {
       }
 }
 export function loginWithJwt(result) {
-    localStorage.setItem(tokenKey, result.token);
+    localStorage.setItem(tokenKey, result);
 }
 export function logout() {
     localStorage.removeItem(tokenKey);
 }
 
-export default {
-    login,
-    logout,
-    loginWithJwt,
-    getCurrentUser
-}
+// export default {
+//     login,
+//     logout,
+//     loginWithJwt,
+//     getCurrentUser
+// }

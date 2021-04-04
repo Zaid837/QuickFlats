@@ -42,11 +42,7 @@ class Navbar extends React.Component {
                     Home
                   </Link>
                 </li>
-                <li>
-                  <Link to="/listFlat" className="nav-item">
-                    List a flat
-                  </Link>
-                </li>
+
                 <li>
                   <Link to="#" className="nav-item">
                     Find a flat
@@ -71,6 +67,11 @@ class Navbar extends React.Component {
                     <li>
                       <Link className="nav-item" to="/dashboard">
                         Hi, {user.userName}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/listFlat" className="nav-item">
+                        List a flat
                       </Link>
                     </li>
                     <li>

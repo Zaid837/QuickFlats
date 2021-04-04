@@ -4,7 +4,7 @@ import Input from "../input";
 import Joi from "joi-browser";
 import { withRouter } from "react-router-dom";
 import { register } from "../../services/userService";
-import auth from "../../services/authService";
+import { loginWithJwt } from "../../services/authService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Form from "../Form/form";
@@ -33,7 +33,8 @@ class SignUpForm extends Form {
     try {
       //call the server
       const response = await register(this.state.data);
-      auth.loginWithJwt(response.data.token);
+      // console.log(response);
+      loginWithJwt(response.data.token);
       toast.success("successful");
       setTimeout(() => {
         window.location = "/dashboard";

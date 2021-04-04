@@ -6,7 +6,7 @@ import Joi from "joi-browser";
 import CustomButton from "../button/button.component";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import auth from "../../services/authService";
+import { login } from "../../services/authService";
 
 class LoginForm extends Form {
   state = {
@@ -23,7 +23,7 @@ class LoginForm extends Form {
   doSubmit = async () => {
     try {
       const { data } = this.state;
-      await auth.login(data.email, data.userName, data.password);
+      await login(data.email, data.userName, data.password);
       toast.success("login successful");
       setTimeout(() => {
         window.location = "/dashboard";

@@ -10,7 +10,7 @@ import HomePage from "./pages/Home-page";
 import SignInPage from "./pages/sign-in-page"
 import ListFlatPage from "./pages/list-flat-page";
 import Logout from './components/logout'
-import auth from './services/authService'
+import {getCurrentUser} from './services/authService'
 import "./App.css";
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -21,7 +21,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-   const user = auth.getCurrentUser()
+   const user = getCurrentUser()
    this.setState({user})
   }
    render() { 
