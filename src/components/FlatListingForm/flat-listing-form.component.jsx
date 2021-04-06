@@ -95,7 +95,13 @@ class FlatListingForm extends Component {
       case 4:
         return <h1>success</h1>;
       default:
-        return <h1>default</h1>;
+        return (
+          <ListingUserData
+            nextStep={this.nextStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
     }
   }
 }

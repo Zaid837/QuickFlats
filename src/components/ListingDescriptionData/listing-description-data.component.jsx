@@ -2,11 +2,23 @@ import React, { Component } from "react";
 import FormBg from "../../assets/images/formbg.png";
 import "./listing-description-data.styles.css";
 import Input from "../input";
-
+import { toast } from "react-toastify";
+import { withRouter } from "react-router-dom";
+import { list } from "../../services/flatService";
 class ListingDescriptionData extends Component {
-  continue = (e) => {
-    e.preventDefault();
-    this.props.nextStep();
+  continue = async (e) => {
+    // process form submission
+    try {
+      e.preventDefault();
+      const response = await list(this.props.values);
+      console.log(response);
+      toast.success("flat listed successfully");
+      setTimeout(() => {
+        window.location = "/dashboard";
+      }, 2000);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   back = (e) => {
@@ -61,7 +73,7 @@ class ListingDescriptionData extends Component {
                     </div>
                     <div>
                       <button className="continue" onClick={this.continue}>
-                        continue
+                        Submit Flat
                       </button>
                     </div>
                   </div>
@@ -78,4 +90,4 @@ class ListingDescriptionData extends Component {
   }
 }
 
-export default ListingDescriptionData;
+export default withRouter(ListingDescriptionData);

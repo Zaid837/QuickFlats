@@ -1,13 +1,13 @@
 const cors = require('cors');
 const express = require('express') 
-const morgan = require('morgan')
 const mongoose = require('mongoose') 
+const methodOverride = require('method-override')
 const app = express()
 
 
 
 const productRoutes = require('./api/routes/products')
-const orderRoutes = require('./api/routes/orders')
+const flatsRoutes = require('./api/routes/flats')
 const userRoutes = require('./api/routes/users')
 
 mongoose.connect('mongodb://localhost/quickhomes' , {
@@ -21,7 +21,8 @@ mongoose.connect('mongodb://localhost/quickhomes' , {
 app.use(cors());
 app.options('*', cors());
 // app.use(morgan('dev'));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'))
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -38,7 +39,7 @@ app.use((req, res, next) => {
 })
 
 app.use('/products', productRoutes) 
-app.use('/orders', orderRoutes)
+app.use('/listflat', flatsRoutes)
 app.use('/users', userRoutes)
 
 app.use((req, res, next) => {
