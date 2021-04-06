@@ -44,7 +44,7 @@ class Navbar extends React.Component {
                 </li>
 
                 <li>
-                  <Link to="#" className="nav-item">
+                  <Link to="/searchFlat" className="nav-item">
                     Find a flat
                   </Link>
                 </li>

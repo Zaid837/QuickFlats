@@ -9,6 +9,7 @@ import DashboardPage from "./pages/dashboard-pages/dashboard-page"
 import HomePage from "./pages/Home-page";
 import SignInPage from "./pages/sign-in-page"
 import ListFlatPage from "./pages/list-flat-page";
+import SearchFlatPage from './pages/search-flat-page'
 import Logout from './components/logout'
 import {getCurrentUser} from './services/authService'
 import "./App.css";
@@ -50,6 +51,11 @@ class App extends React.Component {
             <Route path="/listFlat" exact>
               <MainLayout user={user}>
                 <ListFlatPage/>
+              </MainLayout>
+            </Route>
+            <Route path="/searchFlat" exact>
+              <MainLayout user={user}>
+                <SearchFlatPage/>
               </MainLayout>
             </Route>
             <Route path="/dashboard" exact>
