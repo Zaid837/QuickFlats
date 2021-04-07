@@ -1,0 +1,43 @@
+.toggle-button {
+  background-color: var(--sec-color);
+  width: 70px;
+  height: 30px;
+  border-radius: 50px;
+  display: flex;
+  text-transform: uppercase;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  align-items: center;
+  font-family: Arial;
+  position: relative;
+}
+.item {
+  width: 50%;
+}
+.slider {
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border-radius: 100%;
+  position: absolute;
+  left: -2px;
+  top: 5px;
+}
+input:checked ~ .toggle-button-css {
+  background-color: #211f1f;
+}
+input:checked ~ .toggle-button-css .slider {
+  transform: translatex(50px);
+}
+label,
+.slider {
+  transition: all 0.3s cubic-bezier(0.66, 0.07, 0.58, 1);
+}
+input {
+  display: none;
+}
+.toggle-button-css {
+  cursor: pointer;
+}

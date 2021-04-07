@@ -1,0 +1,27 @@
+.flat-hero {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.flat-header {
+  color: var(--heading-text);
+  font-weight: 700;
+  text-align: center;
+}
+.flat-card {
+  color: var(--body-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.flat-card-img {
+  width: 60px;
+}
+.flat-card-text {
+  text-align: center;
+}
+
+@media screen and (max-width: 560px) {
+  .flat-card-text {
+    width: 300px;
+  }
+}

@@ -1,0 +1,9 @@
+.request-card {
+  color: var(--white-text);
+}
+.request-con {
+  width: 100%;
+  height: fit-content;
+  background: var(--pri-dash-color);
+  padding: 10px 20px 10px 20px;
+}

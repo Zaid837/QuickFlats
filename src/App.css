@@ -3,7 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-:root {
+.App {
+  background: var(--main-bg);
+}
+html {
   --main-bg: #fff;
   --pri-color: #1d3387;
   --pri-dash-color: #1d3387;
@@ -11,10 +14,11 @@
   --body-text: #7e7777;
   --heading-text: #3c3a3a;
   --white-text: #ffffff;
+  --black-text: #000;
   --location-bg: linear-gradient(to right, #1d3387 50%, #f5f5f5 0%);
 }
 /* dark mode */
-/* :root {
+.dark {
   --main-bg: #000;
   --pri-color: #1d3387;
   --pri-dash-color: #211f1f;
@@ -22,8 +26,10 @@
   --body-text: #ccc;
   --heading-text: #fff;
   --white-text: #fff;
+  --black-text: #fff;
   --location-bg: linear-gradient(to right, #211f1f 50%, #363232 0%);
-} */
+  transition-delay: 0.4s;
+}
 body {
   font-size: 14px;
   background: var(--main-bg);

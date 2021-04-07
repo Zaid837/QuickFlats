@@ -21,7 +21,9 @@ class UserNav extends React.Component {
                 </Link>
               </div>
               <div className="logout">
-                <p>log out</p>
+                <Link to="/logout">
+                  <p>log out</p>
+                </Link>
               </div>
             </div>
           </div>

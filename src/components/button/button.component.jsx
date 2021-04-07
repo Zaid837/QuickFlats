@@ -3,10 +3,11 @@ import "./button.styles.css";
 
 class CustomButton extends React.Component {
   render(props) {
-    const { label, size, invertedButton } = this.props;
+    const { label, size, invertedButton, type } = this.props;
     return (
       <React.Fragment>
         <button
+          type={type}
           className={`${invertedButton ? "c-btn-inverted" : "c-btn"}`}
           style={{ width: size }}
         >

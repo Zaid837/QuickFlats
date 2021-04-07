@@ -1,0 +1,24 @@
+.flat-container {
+  margin-top: 80px;
+  color: var(--black-text);
+}
+.flats {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.flat {
+  /* width: 25%; */
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.flat-image-card {
+  width: 300px;
+  padding: 2%;
+  /* border: 1px solid var(--sec-color); */
+  border-radius: 5px;
+}
+.flat-image {
+  width: 100%;
+}

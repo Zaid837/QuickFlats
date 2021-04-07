@@ -19,9 +19,10 @@ class UserDashboard extends React.Component {
     }
   };
   render() {
+    const { user } = this.props;
     return (
       <div className="dashboard">
-        <Sidebar />
+        <Sidebar user={user} />
         <div className="content-area" id="content-area">
           <UserNav menu={this.menu} />
           {this.props.children}

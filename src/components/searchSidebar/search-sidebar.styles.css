@@ -1,0 +1,30 @@
+.search-sidebar {
+  position: fixed;
+  top: 60px;
+  width: 250px;
+  height: 100vh;
+  background: var(--pri-dash-color);
+  margin: 0px;
+  transition: 0.5s;
+  padding-top: 20px;
+}
+.search-sidebar-content {
+  padding-left: 40px;
+  text-align: left;
+  margin-top: 50px;
+  color: var(--white-text);
+}
+form ul {
+  padding: 10px 20px 10px 0;
+}
+form ul li {
+  list-style-type: none;
+  margin-bottom: 50px;
+}
+label {
+  margin-bottom: 5px;
+}
+.search-select {
+  width: 190px;
+  border-radius: 5px;
+}

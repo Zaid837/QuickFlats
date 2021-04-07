@@ -1,0 +1,23 @@
+.listing-card {
+  color: var(--black-text);
+}
+.listings-con {
+  width: 100%;
+  height: fit-content;
+  background: var(--pri-dash-color);
+  padding: 10px 20px 10px 20px;
+}
+.list-card {
+  display: flex;
+  justify-content: space-between;
+  color: var(--white-text);
+}
+.flat-img-card {
+  width: 50%;
+}
+.flat-img {
+  width: 100%;
+}
+.flat-info {
+  text-align: left;
+}

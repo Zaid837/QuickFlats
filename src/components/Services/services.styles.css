@@ -3,6 +3,7 @@
   overflow: hidden;
   width: 100%;
   color: var(--body-text);
+  background: var(--main-bg);
 }
 .services-title {
   font-weight: 700;
