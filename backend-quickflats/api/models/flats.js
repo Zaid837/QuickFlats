@@ -10,6 +10,7 @@ const flatsSchema = new Schema({
     paymentPlan: String,
     price: Number,
     rooms: Number,
+    images: String,
     description: String,
 })
 
