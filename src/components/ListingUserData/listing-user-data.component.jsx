@@ -2,55 +2,31 @@ import React, { Component } from "react";
 import "./listing-user-data.styles.css";
 import FormBg from "../../assets/images/formbg.png";
 import Input from "../input";
-import axios from "axios";
+import { states_data } from "../../states";
 
 class ListingUserData extends Component {
-  state = {
-    states: [],
-    cities: [],
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      states: states_data,
+      cities: [],
+    };
+  }
   continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
   };
 
-  async componentDidMount() {
-    try {
-      const response = await axios.get(
-        "https://www.universal-tutorial.com/api/states/Nigeria",
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJheW9taWRlLnphaWRAdGhlYnVsYi5hZnJpY2EiLCJhcGlfdG9rZW4iOiJXdGp1VUVrLUhoVU5CWjRaYnkzSDg1bjFSbHNMTG54bnQxQXlKb0l5Nm4yd0ExX0F0WFpPd1R1ZklfQktmQ1pkUnhvIn0sImV4cCI6MTYxODAwNjI4NX0.KtQKqQoesr5-10idzDVmqTwpNOkkoxjDfZK0htwEgb4",
-            Accept: "application/json",
-          },
-        }
-      );
-      this.setState({ states: response.data });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // console.log(prevProps, "previousprops");
+    // console.log(prevState, "previousstate");
     if (prevProps.values.state !== this.props.values.state) {
-      try {
-        const response_cities = await axios.get(
-          `https://www.universal-tutorial.com/api/cities/${this.props.values.state}`,
-          {
-            headers: {
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJheW9taWRlLnphaWRAdGhlYnVsYi5hZnJpY2EiLCJhcGlfdG9rZW4iOiJXdGp1VUVrLUhoVU5CWjRaYnkzSDg1bjFSbHNMTG54bnQxQXlKb0l5Nm4yd0ExX0F0WFpPd1R1ZklfQktmQ1pkUnhvIn0sImV4cCI6MTYxODAwNjI4NX0.KtQKqQoesr5-10idzDVmqTwpNOkkoxjDfZK0htwEgb4",
-              Accept: "application/json",
-            },
-          }
-        );
-        // console.log(response_cities);
-        this.setState({ cities: response_cities.data });
-      } catch (error) {
-        console.log(error);
-      }
-      // console.log("matched");
+      const state = this.state.states.filter(
+        (city) => city.state === this.props.values.state
+      );
+      console.log(state[0].lgas);
+      this.setState({ cities: state[0].lgas });
     }
   }
   render() {
@@ -99,11 +75,7 @@ class ListingUserData extends Component {
                     >
                       <option value="state">state</option>
                       {states.map((state) => (
-                        <React.Fragment>
-                          <option value={state._state_name}>
-                            {state.state_name}
-                          </option>
-                        </React.Fragment>
+                        <option value={state.state}>{state.state}</option>
                       ))}
                     </select>
                   </li>
@@ -118,7 +90,7 @@ class ListingUserData extends Component {
                       onChange={handleChange("city")}
                     >
                       {cities.map((city) => (
-                        <option value={city.city_name}>{city.city_name}</option>
+                        <option value={city}>{city}</option>
                       ))}
                     </select>
                   </li>
