@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6e2c203807964e0e90ffead0ded43061)](https://app.codacy.com/gh/Zaid837/QuickFlats?utm_source=github.com&utm_medium=referral&utm_content=Zaid837/QuickFlats&utm_campaign=Badge_Grade_Settings)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
