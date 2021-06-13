@@ -1,7 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./sidebar.styles.css";
 import { Link } from "react-router-dom";
-// import User from "../../assets/images/tami.jpg";
 
 const Sidebar = ({ user }) => {
   return (
@@ -10,7 +10,13 @@ const Sidebar = ({ user }) => {
         <div className="sidebar-content">
           <div className="user-profile">
             {/* <img src={User} alt="avatar" className="avatar" /> */}
-            {/* <h5 className="username mt-3">Hi, {user.userName}</h5> */}
+            {user.user === null ? (
+              " "
+            ) : (
+              <h5 className="username mt-3">
+                {user.user && <p>Hi, {user.user.userName}</p>}
+              </h5>
+            )}
           </div>
           <div className="sidebar-nav mt-5">
             <ul className="list-unstyled">
@@ -40,4 +46,8 @@ const Sidebar = ({ user }) => {
   );
 };
 
-export default Sidebar;
+const mapStateToProps = (state) => ({
+  user: state.user.currentUser,
+});
+
+export default connect(mapStateToProps)(Sidebar);

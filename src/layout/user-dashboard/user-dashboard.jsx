@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import Sidebar from "../../components/sidebar/sidebar.component";
 import UserNav from "../../components/usernav/usernav.component";
 import "./user-dashboard.styles.css";
@@ -19,10 +20,10 @@ class UserDashboard extends React.Component {
     }
   };
   render() {
-    const { user } = this.props;
+    // const { user } = this.props;
     return (
       <div className="dashboard">
-        <Sidebar user={user} />
+        <Sidebar />
         <div className="content-area" id="content-area">
           <UserNav menu={this.menu} />
           {this.props.children}
@@ -32,4 +33,8 @@ class UserDashboard extends React.Component {
   }
 }
 
-export default UserDashboard;
+const mapStateToProps = (state) => ({
+  user: state.user.currentUser,
+});
+
+export default connect(mapStateToProps)(UserDashboard);
