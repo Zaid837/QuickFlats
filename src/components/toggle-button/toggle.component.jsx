@@ -2,9 +2,33 @@ import React, { Component } from "react";
 import "./toggle.styles.css";
 
 class Toggle extends Component {
-  toggleTheme = () => {
+  constructor() {
+    super();
+
+    this.state = {
+      themeSwitch: " ",
+    };
+  }
+  componentDidMount() {
     const root = document.documentElement;
-    root.classList.toggle("dark");
+    let currentTheme = localStorage.getItem("theme");
+    root.classList.add(currentTheme);
+  }
+
+  toggleTheme = () => {
+    let currentTheme = localStorage.getItem("theme");
+    const root = document.documentElement;
+
+    if (currentTheme === "light") {
+      root.classList.toggle("dark");
+      localStorage.setItem("theme", "dark");
+    }
+    if (currentTheme === "dark") {
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+
+    // this.setState({ Theme: currentTheme });
   };
   render(props) {
     return (
