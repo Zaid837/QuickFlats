@@ -1,4 +1,6 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/5a45855a872c4a8681b4abd44349b0d3)](https://www.codacy.com/gh/Zaid837/QuickFlats/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Zaid837/QuickFlats&amp;utm_campaign=Badge_Grade)
+
+link to live website still in production : [QuickFlats](https://quickflats-app.herokuapp.com/).
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
