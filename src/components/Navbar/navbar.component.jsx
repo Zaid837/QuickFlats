@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./navbar.styles.css";
 import Logo from "../../assets/images/logo.png";
@@ -18,8 +19,9 @@ class Navbar extends React.Component {
     document.getElementById("close").classList.toggle("m-close");
     this.setState({ navbarOpen: !this.state.navbarOpen });
   };
-  render(props) {
+  render() {
     const { user } = this.props;
+    console.log(user);
     return (
       <div className="Navbar" id="c-nav">
         <div className="container">
@@ -53,7 +55,7 @@ class Navbar extends React.Component {
                     About
                   </Link>
                 </li>
-                {!user && (
+                {user.user === null ? (
                   <React.Fragment>
                     <li>
                       <Link className="nav-item" to="/signIn">
@@ -61,12 +63,11 @@ class Navbar extends React.Component {
                       </Link>
                     </li>
                   </React.Fragment>
-                )}
-                {user && (
+                ) : (
                   <React.Fragment>
                     <li>
                       <Link className="nav-item" to="/dashboard">
-                        Hi, {user.userName}
+                        {user.user && <span>Hi, {user.user.userName}</span>}
                       </Link>
                     </li>
                     <li>
@@ -81,6 +82,7 @@ class Navbar extends React.Component {
                     </li>
                   </React.Fragment>
                 )}
+
                 <li style={{ display: "inline-block" }}>
                   <Toggle />
                 </li>
@@ -93,4 +95,8 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  user: state.user.currentUser,
+});
+
+export default connect(mapStateToProps)(Navbar);

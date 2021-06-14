@@ -28,9 +28,3 @@ export function logout() {
     localStorage.removeItem(tokenKey);
 }
 
-// export default {
-//     login,
-//     logout,
-//     loginWithJwt,
-//     getCurrentUser
-// }

@@ -1,7 +1,5 @@
 import React from "react";
 import "./flat-container.styles.css";
-import Flat1 from "../../assets/images/flat1.jpg";
-import Flat2 from "../../assets/images/flat2.jpg";
 import http from "../../services/httpService";
 import { api } from "../../config.json";
 
@@ -28,9 +26,13 @@ class FlatContainer extends React.Component {
         <div className="container">
           <div className="flats">
             {flats.map((flat) => (
-              <div className="flat">
+              <div key={flat} className="flat">
                 <div className="flat-image-card">
-                  <img src={Flat1} alt="flat-img" className="flat-image" />
+                  <img
+                    src={flat.images}
+                    alt="flat-img"
+                    className="flat-image"
+                  />
                 </div>
                 <h5>{flat.fullName}</h5>
                 <p>

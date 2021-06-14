@@ -34,6 +34,7 @@ const seedDb = async() => {
                 paymentPlan: `${flat[randomNumber].paymentPlan}`,
                 price: `${flat[randomNumber].price}`,
                 rooms: `${flat[randomNumber].rooms}`,
+                images: 'https://source.unsplash.com/collection/1118894',
                 description: `${flat[randomNumber].description}`
         })
         await newFlat.save()

@@ -53,7 +53,6 @@ const user_create_signup = (req, res, next) => {
                         res.status(500).json({
                             error: err
                         })
-        
                     })
                 }
                 

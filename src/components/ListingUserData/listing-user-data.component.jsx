@@ -2,13 +2,35 @@ import React, { Component } from "react";
 import "./listing-user-data.styles.css";
 import FormBg from "../../assets/images/formbg.png";
 import Input from "../input";
+import { states_data } from "../../states";
 
 class ListingUserData extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      states: states_data,
+      cities: [],
+    };
+  }
   continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
   };
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // console.log(prevProps, "previousprops");
+    // console.log(prevState, "previousstate");
+    if (prevProps.values.state !== this.props.values.state) {
+      const state = this.state.states.filter(
+        (city) => city.state === this.props.values.state
+      );
+      console.log(state[0].lgas);
+      this.setState({ cities: state[0].lgas });
+    }
+  }
   render() {
+    const { states, cities } = this.state;
     const { values, handleChange } = this.props;
     return (
       <div className="form-con ">
@@ -51,8 +73,10 @@ class ListingUserData extends Component {
                       value={values.state}
                       onChange={handleChange("state")}
                     >
-                      <option value="Lagos">Lagos</option>
-                      <option value="Abuja">Abuja</option>
+                      <option value="state">state</option>
+                      {states.map((state) => (
+                        <option value={state.state}>{state.state}</option>
+                      ))}
                     </select>
                   </li>
                   <li>
@@ -65,9 +89,9 @@ class ListingUserData extends Component {
                       value={values.city}
                       onChange={handleChange("city")}
                     >
-                      <option value="Ikeja">Ikeja</option>
-                      <option value="Lekki">Lekki</option>
-                      <option value="Yaba">Yaba</option>
+                      {cities.map((city) => (
+                        <option value={city}>{city}</option>
+                      ))}
                     </select>
                   </li>
                   <li>

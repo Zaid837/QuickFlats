@@ -3,11 +3,10 @@ import Navbar from "../components/Navbar/navbar.component";
 import Footer from "../components/Footer/footer.component";
 
 class MainLayout extends React.Component {
-  render(props) {
-    const { user } = this.props;
+  render() {
     return (
       <React.Fragment>
-        <Navbar user={user} />
+        <Navbar />
         {this.props.children}
         <Footer />
       </React.Fragment>
