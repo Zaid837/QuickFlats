@@ -3,7 +3,7 @@ export const setCurrentUser = user => ({
     payload: user
 }) 
 
-export const removeCurrentUser = user => ({
+export const removeCurrentUser = () => ({
     type: 'REMOVE_CURRENT_USER',
-    payload: user
+    
 })

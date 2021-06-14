@@ -27,10 +27,8 @@ class Toggle extends Component {
       root.classList.remove("dark");
       localStorage.setItem("theme", "light");
     }
-
-    // this.setState({ Theme: currentTheme });
   };
-  render(props) {
+  render() {
     return (
       <React.Fragment>
         <input type="checkbox" id="toggle-button-css" />

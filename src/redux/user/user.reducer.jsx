@@ -11,7 +11,7 @@ const userReducer = (prevState = INITIAL_STATE, action) => {
     case "REMOVE_CURRENT_USER":
       return {
         ...prevState,
-        // currentUser: action.payload,
+        currentUser: [],
       };
     default:
       return prevState;
