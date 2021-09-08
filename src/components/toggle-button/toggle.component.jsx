@@ -1,50 +1,31 @@
-import React, { Component } from "react";
-import "./toggle.styles.css";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTheme } from '../../redux/theme/theme.actions';
+import './toggle.styles.css';
 
-class Toggle extends Component {
-  constructor() {
-    super();
+const Toggle = () => {
+  const dispatch = useDispatch();
+  const themeState = useSelector((state) => state.theme.theme);
 
-    this.state = {
-      themeSwitch: " ",
-    };
-  }
-  componentDidMount() {
-    const root = document.documentElement;
-    let currentTheme = localStorage.getItem("theme");
-    root.classList.add(currentTheme);
-  }
-
-  toggleTheme = () => {
-    let currentTheme = localStorage.getItem("theme");
-    const root = document.documentElement;
-
-    if (currentTheme === "light") {
-      root.classList.toggle("dark");
-      localStorage.setItem("theme", "dark");
-    }
-    if (currentTheme === "dark") {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
+  const toggleTheme = () => {
+    dispatch(setTheme(!themeState));
   };
-  render() {
-    return (
-      <React.Fragment>
-        <input type="checkbox" id="toggle-button-css" />
 
-        <label
-          htmlFor="toggle-button-css"
-          className="toggle-button toggle-button-css"
-          onClick={this.toggleTheme}
-        >
-          <div className="item off">🌚</div>
-          <div className="item on">🌝</div>
-          <div className="slider"></div>
-        </label>
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <input type="checkbox" id="toggle-button-css" />
+
+      <label
+        htmlFor="toggle-button-css"
+        className="toggle-button toggle-button-css"
+        onClick={toggleTheme}
+      >
+        <div className="item off">🌚</div>
+        <div className="item on">🌝</div>
+        <div className="slider"></div>
+      </label>
+    </React.Fragment>
+  );
+};
 
 export default Toggle;

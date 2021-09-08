@@ -1,11 +1,11 @@
-import { Component } from "react";
-import { connect } from "react-redux";
-import { removeCurrentUser } from "../redux/user/user.actions";
-import { logout } from "../services/authService";
+import { Component } from 'react';
+import { connect } from 'react-redux';
+import { removeCurrentUser } from '../redux/user/user.actions';
+// import { logout } from '../services/authService';
 class Logout extends Component {
   componentDidMount() {
-    logout();
-    window.location = "/";
+    this.props.removeCurrentUser();
+    window.location = '/';
   }
   render() {
     return null;
