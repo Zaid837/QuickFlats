@@ -6,7 +6,10 @@
 .App {
   background: var(--main-bg);
 }
-html {
+
+/* dark mode */
+
+:root {
   --main-bg: #fff;
   --pri-color: #1d3387;
   --pri-dash-color: #1d3387;
@@ -17,8 +20,7 @@ html {
   --black-text: #000;
   --location-bg: linear-gradient(to right, #1d3387 50%, #f5f5f5 0%);
 }
-/* dark mode */
-.dark {
+[data-theme='dark'] {
   --main-bg: #000;
   --pri-color: #1d3387;
   --pri-dash-color: #211f1f;
@@ -30,11 +32,13 @@ html {
   --location-bg: linear-gradient(to right, #211f1f 50%, #363232 0%);
   transition-delay: 0.4s;
 }
+
 body {
   font-size: 14px;
   background: var(--main-bg);
   font-weight: 400;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
+  height: 100%;
 }
 .mobile {
   display: none;

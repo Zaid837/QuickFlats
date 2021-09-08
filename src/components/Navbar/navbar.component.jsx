@@ -1,9 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import "./navbar.styles.css";
-import Logo from "../../assets/images/logo.png";
-import Toggle from "../toggle-button/toggle.component";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import './navbar.styles.css';
+import { removeCurrentUser } from '../../redux/user/user.actions';
+import Logo from '../../assets/images/logo.png';
+import Toggle from '../toggle-button/toggle.component';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -14,14 +15,17 @@ class Navbar extends React.Component {
   }
 
   menu = () => {
-    document.getElementById("overlay").classList.toggle("overlay");
-    document.getElementById("mobile-menu").classList.toggle("show");
-    document.getElementById("close").classList.toggle("m-close");
+    document.getElementById('overlay').classList.toggle('overlay');
+    document.getElementById('mobile-menu').classList.toggle('show');
+    document.getElementById('close').classList.toggle('m-close');
     this.setState({ navbarOpen: !this.state.navbarOpen });
+  };
+
+  handleLogout = () => {
+    this.props.removeCurrentUser();
   };
   render() {
     const { user } = this.props;
-    console.log(user);
     return (
       <div className="Navbar" id="c-nav">
         <div className="container">
@@ -33,7 +37,7 @@ class Navbar extends React.Component {
           <div className="row pt-4">
             <div className="col-sm-2">
               <Link to="/" className="logo hide" id="logo">
-                <img style={{ width: "50px" }} src={Logo} alt="logo" />
+                <img style={{ width: '50px' }} src={Logo} alt="logo" />
                 {/* QUICKFLATS */}
               </Link>
             </div>
@@ -55,7 +59,7 @@ class Navbar extends React.Component {
                     About
                   </Link>
                 </li>
-                {user.user === null ? (
+                {user.length === 0 ? (
                   <React.Fragment>
                     <li>
                       <Link className="nav-item" to="/signIn">
@@ -67,7 +71,7 @@ class Navbar extends React.Component {
                   <React.Fragment>
                     <li>
                       <Link className="nav-item" to="/dashboard">
-                        {user.user && <span>Hi, {user.user.userName}</span>}
+                        {user.userName && <span>Hi, {user.userName}</span>}
                       </Link>
                     </li>
                     <li>
@@ -75,15 +79,16 @@ class Navbar extends React.Component {
                         List a flat
                       </Link>
                     </li>
-                    <li>
-                      <Link className="nav-item" to="/logout">
-                        logout
-                      </Link>
+                    <li
+                      style={{ color: '#fff', cursor: 'pointer' }}
+                      onClick={this.handleLogout}
+                    >
+                      logout
                     </li>
                   </React.Fragment>
                 )}
 
-                <li style={{ display: "inline-block" }}>
+                <li style={{ display: 'inline-block' }}>
                   <Toggle />
                 </li>
               </ul>
@@ -98,5 +103,8 @@ class Navbar extends React.Component {
 const mapStateToProps = (state) => ({
   user: state.user.currentUser,
 });
+const mapDispatchToProps = (dispatch) => ({
+  removeCurrentUser: () => dispatch(removeCurrentUser()),
+});
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
