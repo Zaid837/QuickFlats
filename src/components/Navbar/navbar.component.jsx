@@ -59,7 +59,7 @@ class Navbar extends React.Component {
                     About
                   </Link>
                 </li>
-                {user.length === 0 ? (
+                {user === null ? (
                   <React.Fragment>
                     <li>
                       <Link className="nav-item" to="/signIn">
